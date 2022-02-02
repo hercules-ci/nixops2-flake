@@ -94,7 +94,7 @@ The secret is named `nixops-example-aws` because the convention is `${deployment
 
 ## Test or Staging Environment
 
-NixOps currently only supports `nixopsConfigurations.default`, limiting the options when it comes to staging. You might be able to work around this limitation by using a diverging git branch, although I would generally not recommend that. This example will be updated when multiple `nixopsConfigurations` is implemented in NixOps. FIXME: issue link to subscribe
+NixOps currently only supports `nixopsConfigurations.default`, limiting the options when it comes to staging. You might be able to work around this limitation by using a diverging git branch, although I would generally not recommend that. This example will be updated when multiple `nixopsConfigurations` is implemented in NixOps. You may want to subscribe to the [issue](https://github.com/hercules-ci/nixops2-flake/issues/2) to receive a notification when implemented.
 
 ## Other Cloud Provider
 
