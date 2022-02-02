@@ -21,8 +21,8 @@
         let
           effects = self.effects { src.ref = null; };
         in {
-          deploy-staging-hello-prebuilt = effects.staging-hello.prebuilt;
-          deploy-staging-hello-dependencies = effects.staging-hello.dependencies;
+          deploy-nixops-example-prebuilt = effects.nixops-example.prebuilt;
+          deploy-nixops-example-dependencies = effects.nixops-example.dependencies;
         };
     };
 
@@ -44,7 +44,7 @@
           echo
           echo You can run effects locally with
           echo "  hci secret --help to manage your local copies of secrets"
-          echo "  hci effect run --as-branch main effects.staging-hello.run"
+          echo "  hci effect run --as-branch main effects.nixops-example.run"
           echo
           echo "NOTE: If you're doing this in a fresh repo or fresh branch,"
           echo "      make sure to create a commit and set the branch upstream."
@@ -126,7 +126,7 @@
     in {
 
       # https://docs.hercules-ci.com/hercules-ci-effects/reference/nix-functions/runif/
-      staging-hello = effects.runIf (src.ref == "refs/heads/main") (
+      nixops-example = effects.runIf (src.ref == "refs/heads/main") (
 
         # https://docs.hercules-ci.com/hercules-ci-effects/reference/nix-functions/runnixops2/
         effects.runNixOps2 {

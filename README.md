@@ -57,14 +57,14 @@ NOTE: If you're getting `git` errors, make sure you've set an upstream for your 
 You can now run the deployment process on your local system.
 
 ```console
-hci effect run --as-branch main effects.staging-hello.run 
+hci effect run --as-branch main effects.nixops-example.run 
 ```
 
 ## Continuous Integration and Cache
 
 The `runIf` function modifies the effect to perform a pure build instead of a deployment, unless the condition (branch is `main`) is satisfied.
 
-You can perform this build manually using `nix build .#checks.x86_64-linux.deploy-staging-hello-prebuilt`.
+You can perform this build manually using `nix build .#checks.x86_64-linux.deploy-nixops-example-prebuilt`.
 
 The CI will also build this configuration, to make sure your branches are deployable, and to make sure all packages are cached before deployment.
 
