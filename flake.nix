@@ -16,6 +16,16 @@
     cdSystem = "x86_64-linux";
   in
   {
+    checks = {
+      ${cdSystem} =
+        let
+          effects = self.effects { src.ref = null; };
+        in {
+          deploy-staging-hello-prebuilt = effects.staging-hello.prebuilt;
+          deploy-staging-hello-dependencies = effects.staging-hello.dependencies;
+        };
+    };
+
     ciNix = args@{ src }: flake-compat-ci.lib.recurseIntoFlakeWith {
       flake = self;
       systems = ciSystems;
@@ -103,7 +113,7 @@
             resources.ec2SecurityGroups.ssh.name
             resources.ec2SecurityGroups.web.name
           ];
-          networking.firewall.allowedTCPPorts = [80 443];
+          networking.firewall.allowedTCPPorts = [ 80 443 ];
           services.nginx.enable = true;
           services.nginx.virtualHosts.localhost.root = "${pkgs.nix.doc}/share/doc/nix/manual";
         };
